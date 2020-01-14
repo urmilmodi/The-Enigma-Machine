@@ -1,28 +1,29 @@
 #ifndef ROTOR_H
 #define ROTOR_H
 
-#include <vector>
+#include <array>
 #include "helper/enums.hpp"
 
 class Rotor {
 
     private:
 
-        static std::vector<std::vector<Letter, Letter>> rotorsData;
+        static std::array<std::array<Letter, 26>,  5> rotorsData;
         int tick = 1;
-        Rotors no;
+        Rotors rotorNo;
 
-        int accessEncryptedLetter();
+        int accessEncryptedLetter(Letter input);
 
     public:
 
-        Rotor(Rotors type);
+        Rotor(Rotors type, int tickno);
 
         bool setTick(int tickno);
 
-        bool tick();
+        int getTick();
 
-        Letter getLetter(Letter input);
+        void tickUp();
+
+        Letter run(Letter input);
 };
-
 #endif

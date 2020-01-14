@@ -7,15 +7,14 @@
 class RotorController {
 
     private:
-        Rotor left, middle, right;
+        Rotor reflector, left, middle, right;
 
     public:
 
-        RotorController(Rotors Left, Rotors Middle, Rotors Right);
+        RotorController(Rotors reflector, Rotors Left, Rotors Middle, Rotors Right);
 
         Letter run(Letter input);
 
-        bool setTicks(int leftTickno, int middleTickno, int rightTickno);
+        bool setTicks(int reflectorTickno, int leftTickno, int middleTickno, int rightTickno);
 };
-
 #endif

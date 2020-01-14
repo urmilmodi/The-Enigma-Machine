@@ -2,21 +2,19 @@
 #define PLUGBOX_H
 
 #include <vector>
-#include "Plugs.hpp"
+#include "Plug.hpp"
 #include "helper/enums.hpp"
 
 class PlugBox {
     private:
 
-        std::vector<Plug> data;
+        std::vector<Plug> plugs;
 
     public:
-        PlugBox(std::vector<Plug> data);
+        PlugBox(std::vector<Plug> & plugData);
 
         bool disconnect(Plug remove);
 
-        bool connect(Plug connect);
+        bool connect(Plug attach);
 };
-
-
 #endif

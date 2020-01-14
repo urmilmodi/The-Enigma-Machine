@@ -8,7 +8,7 @@ class Plug {
 
     private:
 
-        std::pair <Letter, Letter> data;
+        std::pair<Letter, Letter> data;
     
     public:
 
@@ -18,10 +18,10 @@ class Plug {
 
         Letter getSecond();
 
-        bool setFirst();
+        void setFirst(Letter First);
 
-        bool setSecond();
+        void setSecond(Letter Second);
+
+        bool operator==(const Plug & src);
 };
-
-
 #endif
