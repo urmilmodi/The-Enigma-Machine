@@ -1,11 +1,11 @@
-#include "RotorController.hpp"
+#include "../include/RotorController.hpp"
 
-RotorController::RotorController(Rotors Reflector, Rotors Left, Rotors Middle, Rotors Right) : reflector(Reflector, 1), left(Left, 1), middle(Middle, 1), right(Right, 1) {}
+RotorController::RotorController(Reflectors _Reflector, Rotors _Left, Rotors _Middle, Rotors _Right) : reflector(_Reflector), left(_Left, 1), middle(_Middle, 1), right(_Right, 1) {}
 
-Letter RotorController::run(Letter input) {
+Letter RotorController::run(Letter _input) {
     
     // Inital Run through rotors
-    Letter tempOutput = right.run(input);
+    Letter tempOutput = right.run(_input);
     right.tickUp();
 
     tempOutput = middle.run(tempOutput);
@@ -16,7 +16,6 @@ Letter RotorController::run(Letter input) {
 
     // Reflection back into rotors in reverse direction
     tempOutput = reflector.run(tempOutput);
-    if (left.getTick() == 1) {reflector.tickUp();} // If the previous rotator completes a rotation TickUp
 
     // Final Run through rotors
     tempOutput = left.run(tempOutput);
@@ -31,9 +30,23 @@ Letter RotorController::run(Letter input) {
     return tempOutput;
 }
 
-bool RotorController::setTicks(int reflectorTickno, int leftTickno, int middleTickno, int rightTickno) {
+bool RotorController::setTicks(int _leftTickno, int _middleTickno, int _rightTickno) {
 
     // If any rotor fails, the controller fails and returns false
-    // Upon success of all rotors, the controller returns true
-    return reflector.setTick(reflectorTickno) && left.setTick(leftTickno) && middle.setTick(middleTickno) && right.setTick(rightTickno);
+    // Upon success of all rotors, the controller returns truex
+    return left.setTick(_leftTickno) && middle.setTick(_middleTickno) && right.setTick(_rightTickno);
+}
+
+void RotorController::changeRotor(RotorsPosition _pos, Rotors _newRotor) {
+
+    switch(_pos) {
+        LEFT: left.setRotor(_newRotor);
+        break;
+
+        MIDDLE: middle.setRotor(_newRotor);
+        break;
+
+        RIGHT: right.setRotor(_newRotor);
+        break;
+    }
 }

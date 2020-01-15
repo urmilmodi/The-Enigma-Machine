@@ -8,22 +8,26 @@ class Rotor {
 
     private:
 
-        static std::array<std::array<Letter, 26>,  5> rotorsData;
+        std::array<std::array<Letter, 26>,  5> rotorsData;
         int tick = 1;
-        Rotors rotorNo;
+        Rotors rotor;
 
-        int accessEncryptedLetter(Letter input);
+        int accessEncryptedLetter(Letter _input);
 
     public:
 
-        Rotor(Rotors type, int tickno);
+        Rotor(Rotors _type, int _tickno);
 
-        bool setTick(int tickno);
+        void setRotor(Rotors _type);
+        
+        Rotors getRotor();
+
+        bool setTick(int _tickno);
 
         int getTick();
 
         void tickUp();
 
-        Letter run(Letter input);
+        Letter run(Letter _input);
 };
 #endif

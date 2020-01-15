@@ -12,16 +12,22 @@ class Plug {
     
     public:
 
-        Plug(Letter First, Letter Second);
+        Plug(Letter _First, Letter _Second);
+        
+        ~Plug() = default;
+        
+        Plug(const Plug & _src) = default;
 
-        Letter getFirst();
+        bool operator==(const Plug & _src) const;
 
-        Letter getSecond();
+        Plug & operator=(const Plug & _src) = default;
 
-        void setFirst(Letter First);
+        Letter getFirst() const;
 
-        void setSecond(Letter Second);
+        Letter getSecond() const;
 
-        bool operator==(const Plug & src);
+        bool setFirst(const Letter _First);
+
+        bool setSecond(const Letter _Second);
 };
 #endif

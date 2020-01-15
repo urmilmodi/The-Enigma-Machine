@@ -2,19 +2,23 @@
 #define ROTORCONTROLLER_H
 
 #include "Rotor.hpp"
+#include "Reflector.hpp"
 #include "helper/enums.hpp"
 
 class RotorController {
 
     private:
-        Rotor reflector, left, middle, right;
+        Rotor left, middle, right;
+        Reflector reflector;
 
     public:
 
-        RotorController(Rotors reflector, Rotors Left, Rotors Middle, Rotors Right);
+        RotorController(Reflectors _Reflector, Rotors _Left, Rotors _Middle, Rotors _Right);
 
-        Letter run(Letter input);
+        virtual Letter run(Letter _input);
 
-        bool setTicks(int reflectorTickno, int leftTickno, int middleTickno, int rightTickno);
+        bool setTicks(int _leftTickno, int _middleTickno, int _rightTickno);
+
+        void changeRotor(RotorsPosition _pos, Rotors _newRotor);
 };
 #endif

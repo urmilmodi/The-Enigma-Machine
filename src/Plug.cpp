@@ -1,28 +1,36 @@
-#include "Plug.hpp"
+#include "../include/Plug.hpp"
 
-Plug::Plug(Letter First, Letter Second) {
+Plug::Plug(Letter __First, Letter _Second) {
 
-    this->setFirst(First);
-    this->setSecond(Second);
+    this->setFirst(__First);
+    this->setSecond(_Second);
 }
 
-Letter Plug::getFirst() {
+Letter Plug::getFirst() const {
     return data.first;
 }
 
-Letter Plug::getSecond() {
+Letter Plug::getSecond() const {
     return data.second;
 }
 
-void Plug::setFirst(Letter First) {
-    data.first = First;
+bool Plug::setFirst(const Letter _First) {
+    if (data.second != _First) {
+        data.first = _First;
+        return true;
+    }
+    return false;
 }
 
-void Plug::setSecond(Letter Second) {
-    data.second = Second;
+bool Plug::setSecond(const Letter _Second) {
+    if (data.first != _Second) {
+        data.second = _Second;
+        return true;
+    }
+    return false;
 }
 
-bool Plug::operator==(const Plug & src) {
+bool Plug::operator==(const Plug & _src) const {
 
-    return src.data.first == data.first && src.data.second == data.second;
+    return _src.data.first == data.first && _src.data.second == data.second;
 }
