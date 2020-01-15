@@ -8,7 +8,7 @@ class Rotor {
 
     private:
 
-        std::array<std::array<Letter, 26>,  5> rotorsData;
+        static std::array<std::array<Letter, 26>,  5> rotorsData;
         int tick = 1;
         Rotors rotor;
 

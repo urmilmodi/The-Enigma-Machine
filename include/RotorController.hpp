@@ -15,6 +15,10 @@ class RotorController {
 
         RotorController(Reflectors _Reflector, Rotors _Left, Rotors _Middle, Rotors _Right);
 
+        virtual ~RotorController() = default;
+
+        RotorController(const RotorController & src) = default;
+
         virtual Letter run(Letter _input);
 
         bool setTicks(int _leftTickno, int _middleTickno, int _rightTickno);
