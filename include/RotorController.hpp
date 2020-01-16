@@ -1,6 +1,7 @@
 #ifndef ROTORCONTROLLER_H
 #define ROTORCONTROLLER_H
 
+#include <vector>
 #include "Rotor.hpp"
 #include "Reflector.hpp"
 #include "helper/enums.hpp"
@@ -8,6 +9,7 @@
 class RotorController {
 
     private:
+        
         Rotor left, middle, right;
         Reflector reflector;
 
@@ -15,14 +17,18 @@ class RotorController {
 
         RotorController(Reflectors _Reflector, Rotors _Left, Rotors _Middle, Rotors _Right);
 
-        virtual ~RotorController() = default;
+        void setRotor(RotorsPosition _pos, Rotors _newRotor);
 
-        RotorController(const RotorController & src) = default;
+        std::vector<Rotor> getRotors();
+
+        void setReflector(Reflectors _newReflector);
+
+        Reflector getReflector();
+        
+        bool setOffset(RotorsPosition _pos, int _offset);
+
+        std::vector<int> getOffsets();
 
         virtual Letter run(Letter _input);
-
-        bool setTicks(int _leftTickno, int _middleTickno, int _rightTickno);
-
-        void changeRotor(RotorsPosition _pos, Rotors _newRotor);
 };
 #endif

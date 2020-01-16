@@ -15,10 +15,10 @@ enum RotorsPosition {LEFT, MIDDLE, RIGHT};
 
 #ifndef REFLECTORS_H
 #define REFLECTORS_H
-enum Reflectors {a, b, c, d};
+enum Reflectors {a, b, c}; // google for a solution
 #endif
 
 #ifndef CLI_H
 #define CLI_H
-enum CLI {};
+enum CLI {}; // add states
 #endif

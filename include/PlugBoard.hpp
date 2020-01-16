@@ -11,16 +11,15 @@ class PlugBoard {
         int totalPlugs = 0; // Only 10 Plugs are available
 
     public:
+
+        PlugBoard();
+
         PlugBoard(const std::array<Letter, 26> & _plugData);
-
-        virtual ~PlugBoard() = default;
-
-        PlugBoard(const PlugBoard & src) = default;
 
         virtual Letter run(Letter _input);
 
-        bool disconnect(Letter _A, Letter _B);
+        bool disconnectPlug(Letter _A, Letter _B);
 
-        bool connect(Letter _A, Letter _B);
+        bool connectPlug(Letter _A, Letter _B);
 };
 #endif

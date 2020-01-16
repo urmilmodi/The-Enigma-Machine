@@ -1,9 +1,9 @@
 #include "../include/Rotor.hpp"
 
-Rotor::Rotor(Rotors _type, int _tickno) {
+Rotor::Rotor(Rotors _type, int _offset) {
     
     this->setRotor(_type);
-    this->setTick(_tickno);
+    this->setOffset(_offset);
 
     rotorsData = {{ 
                     {E, S, O, V, P, Z, J, A, Y, Q, U, I, R, H, X, L, N, F, T, G, K, D, C, M, W, B}, // Rotor I
@@ -14,40 +14,43 @@ Rotor::Rotor(Rotors _type, int _tickno) {
     }};
 }
 
-Rotors Rotor::getRotor() {
-    return rotor;
-}
-
 void Rotor::setRotor(Rotors _type) {
+
     rotor = _type;
 }
 
-bool Rotor::setTick(int _tickno) {
+Rotors Rotor::getRotor() {
 
-    if (_tickno > 0 && _tickno < 27) {
-        tick = _tickno;
+    return rotor;
+}
+
+bool Rotor::setOffset(int _offset) {
+
+    if (_offset > 0 && _offset < 27) {
+        offset = _offset;
         return true;
     }
     return false;
 }
 
-int Rotor::getTick() {
-    return tick;
+int Rotor::getOffset() {
+    return offset;
 }
 
-void Rotor::tickUp() {
-    tick++;
-    if (tick == 27) {tick = 1;}
+void Rotor::offsetUpdate() {
+    
+    offset++;
+    if (offset == 27) {offset = 1;}
 }
 
 Letter Rotor::run(Letter _input) {
 
-    return rotorsData[rotor][accessEncryptedLetter(_input)];
+    return rotorsData[rotor][shiftedIndex(_input)];
 }
 
-int Rotor::accessEncryptedLetter(Letter _input) {
+int Rotor::shiftedIndex(Letter _input) {
     
     // Ensures the indices loop back around
-    if (_input + tick - 1 > 26) {return _input + tick - 27;}
-    return _input + tick - 1;
+    if (_input + offset - 1 > 26) {return _input + offset - 27;}
+    return _input + offset - 1;
 }

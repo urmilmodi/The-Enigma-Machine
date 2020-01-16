@@ -1,5 +1,10 @@
 #include "../include/PlugBoard.hpp"
 
+PlugBoard::PlugBoard() {
+    
+    plugData = {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z};
+}
+
 PlugBoard::PlugBoard(const std::array<Letter, 26> & _plugData) {
     
     plugData = _plugData;
@@ -11,7 +16,7 @@ Letter PlugBoard::run(Letter _input) {
     return plugData[_input];
 }
 
-bool PlugBoard::disconnect(Letter _A, Letter _B) {
+bool PlugBoard::disconnectPlug(Letter _A, Letter _B) {
 
     if (!(plugData[_A] == _B && plugData[_B] == _A)) {return false;}
     
@@ -25,7 +30,7 @@ bool PlugBoard::disconnect(Letter _A, Letter _B) {
     return true;
 }
 
-bool PlugBoard::connect(Letter _A, Letter _B) {
+bool PlugBoard::connectPlug(Letter _A, Letter _B) {
 
     if (totalPlugs == 10) {return false;}
 

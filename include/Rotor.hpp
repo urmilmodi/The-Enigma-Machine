@@ -9,24 +9,25 @@ class Rotor {
     private:
 
         static std::array<std::array<Letter, 26>,  5> rotorsData;
-        int tick = 1;
+
+        int offset = 1;
         Rotors rotor;
 
-        int accessEncryptedLetter(Letter _input);
+        int shiftedIndex(Letter _input);
 
     public:
 
-        Rotor(Rotors _type, int _tickno);
+        Rotor(Rotors _type, int _offset);
 
         void setRotor(Rotors _type);
         
         Rotors getRotor();
 
-        bool setTick(int _tickno);
+        bool setOffset(int _offset);
 
-        int getTick();
+        int getOffset();
 
-        void tickUp();
+        void offsetUpdate();
 
         Letter run(Letter _input);
 };

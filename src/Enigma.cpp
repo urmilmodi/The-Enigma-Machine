@@ -1,14 +1,14 @@
 #include "../include/Enigma.hpp"
 
-// Inherit from plugboard and rotor controller
+Enigma::Enigma() : RotorController(a, ROYAL, FLAGS, WAVE), PlugBoard() {}
 
-Enigma::Enigma() : StageA(Ih, II, III, IV), StageB() {}
-/*
-bool Enigma::changeRotor(RotorsPosition pos, Rotors newRotor) {}
+Letter Enigma::run(Letter _input) {
 
-bool Enigma::changeRotorTick(RotorsPosition pos, int tickno) {}
+    Letter tempOutput = PlugBoard::run(_input);
 
-bool Enigma::removePlug(Plug disconnect) {}
+    tempOutput = RotorController::run(tempOutput);
 
-bool Enigma::addPlug(Plug connect) {}
-*/
+    tempOutput = PlugBoard::run(tempOutput);
+    
+    return tempOutput;
+}

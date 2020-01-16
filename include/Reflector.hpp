@@ -8,7 +8,7 @@ class Reflector {
 
     private:
         
-        std::array<std::array<Letter, 26>,  5> reflectorData;
+        static std::array<std::array<Letter, 26>,  3> reflectorData;
         
         Reflectors reflector;
 
@@ -16,8 +16,10 @@ class Reflector {
 
         Reflector(Reflectors _type);
 
-        Letter run(Letter _input);
+        void setReflector(Reflectors _newType);
 
-        void changeReflector(Reflectors _type);
+        Reflectors getReflector();
+
+        Letter run(Letter _input);
 };
 #endif
