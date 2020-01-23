@@ -5,10 +5,10 @@
 #include "helper/enums.hpp"
 
 class Reflector {
-
+    
     private:
         
-        static std::array<std::array<Letter, 26>,  3> reflectorData;
+        std::array<std::array<Letter, 26>,  3> reflectorData;
         
         Reflectors reflector;
 

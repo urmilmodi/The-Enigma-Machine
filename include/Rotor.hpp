@@ -8,7 +8,7 @@ class Rotor {
 
     private:
 
-        static std::array<std::array<Letter, 26>,  5> rotorsData;
+        std::array<std::array<Letter, 26>,  5> rotorData;
 
         int offset = 1;
         Rotors rotor;

@@ -5,12 +5,12 @@ enum Letter {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W
 
 #ifndef ROTORS_H
 #define ROTORS_H
-enum Rotors {ROYAL, FLAGS, WAVE, KINGS, ABOVE};
+enum Rotors {i, II, III, IV, v};
 #endif
 
-#ifndef ROTORSPOSITION_H
-#define ROTORSPOSITION_H
-enum RotorsPosition {LEFT, MIDDLE, RIGHT};
+#ifndef ROTORPOSITION_H
+#define ROTORPOSITION_H
+enum RotorPosition {LEFT, MIDDLE, RIGHT};
 #endif
 
 #ifndef REFLECTORS_H

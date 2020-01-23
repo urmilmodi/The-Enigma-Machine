@@ -5,7 +5,8 @@ Rotor::Rotor(Rotors _type, int _offset) {
     this->setRotor(_type);
     this->setOffset(_offset);
 
-    rotorsData = {{ 
+    rotorData = {{
+    //              {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z}
                     {E, S, O, V, P, Z, J, A, Y, Q, U, I, R, H, X, L, N, F, T, G, K, D, C, M, W, B}, // Rotor I
                     {V, Z, B, R, G, I, T, Y, U, P, S, D, N, H, L, X, A, W, M, J, Q, O, F, E, C, K}, // Rotor II
                     {J, P, G, V, O, U, M, F, Y, Q, B, E, N, H, Z, R, D, K, A, S, X, L, I, C, T, W}, // Rotor III
@@ -38,19 +39,19 @@ int Rotor::getOffset() {
 }
 
 void Rotor::offsetUpdate() {
-    
+
     offset++;
-    if (offset == 27) {offset = 1;}
+    offset = offset % 26;
 }
 
 Letter Rotor::run(Letter _input) {
 
-    return rotorsData[rotor][shiftedIndex(_input)];
+    return Letter(abs((rotorData[rotor][shiftedIndex(_input)] - offset) % 26));
 }
 
 int Rotor::shiftedIndex(Letter _input) {
     
     // Ensures the indices loop back around
-    if (_input + offset - 1 > 26) {return _input + offset - 27;}
-    return _input + offset - 1;
+    //if (_input + offset - 1 > 26) {return _input + offset - 27;}
+    return (_input + offset - 1) % 26;
 }

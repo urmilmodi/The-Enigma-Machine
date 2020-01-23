@@ -17,7 +17,7 @@ class RotorController {
 
         RotorController(Reflectors _Reflector, Rotors _Left, Rotors _Middle, Rotors _Right);
 
-        void setRotor(RotorsPosition _pos, Rotors _newRotor);
+        void setRotor(RotorPosition _pos, Rotors _newRotor);
 
         std::vector<Rotor> getRotors();
 
@@ -25,7 +25,7 @@ class RotorController {
 
         Reflector getReflector();
         
-        bool setOffset(RotorsPosition _pos, int _offset);
+        bool setOffset(RotorPosition _pos, int _offset);
 
         std::vector<int> getOffsets();
 
